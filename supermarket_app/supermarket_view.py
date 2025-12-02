@@ -1,3 +1,11 @@
+# Supermarket Application
+# Made by Kasra Tookallo
+# 2025 the year
+# 11/28/2025
+#----------------------------------------------------------------------
+# This program relies on two main approach simultaneously, including Class_Method (Object_Oriented programming) and Function_handling.
+#----------------------------------------------------------------------
+
 from supermarket_controller import *
 from supermarket_model import *
 from tkinter import *
