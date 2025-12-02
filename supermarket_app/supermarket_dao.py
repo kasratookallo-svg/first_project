@@ -13,7 +13,7 @@ class ProductDataAccess:
     def save(self, product):
         with  sqlite3.connect("supermarket_db") as connection:
             cursor = connection.cursor()
-            cursor.execute("insert into products (id,name,brand ,quantity,price) values (?, ?, ?, ?, ?)",
+            cursor.execute("insert into products (id,name,brand,quantity,price) values (?, ?, ?, ?, ?)",
                            [product.id, product.name, product.brand, product.quantity , product.price]
                            )
             connection.commit()

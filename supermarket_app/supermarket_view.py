@@ -117,11 +117,11 @@ win.title("Super Market _ List of Products")
 win.configure(bg="green")
 
 
-Label(win, text="Id" ,background="grey" , fg="white").place(x=20, y=20)
-Label(win, text="Name",background="grey", fg="white").place(x=20, y=60)
-Label(win, text="brand",background="grey", fg="white").place(x=20, y=100)
-Label(win, text="quantity",background="grey", fg="white").place(x=20, y=140)
-Label(win, text="price",background="grey", fg="white").place(x=20, y=180)
+Label(win, text="Id\n>0" ,background="grey" , fg="white").place(x=20, y=20)
+Label(win, text="Name\n>3",background="grey", fg="white").place(x=20, y=60)
+Label(win, text="brand\n>3",background="grey", fg="white").place(x=20, y=100)
+Label(win, text="quantity\n>0",background="grey", fg="white").place(x=20, y=140)
+Label(win, text="price\n>0",background="grey", fg="white").place(x=20, y=180)
 
 id = IntVar()
 name = StringVar()
@@ -139,6 +139,7 @@ Button(win, text="Save", width=10, command=receive_product, background="blue").p
 Button(win, text="Edit", width=10, command=edit_click , background="yellow").place(x=150, y=230)
 Button(win, text="Remove", width=10, command=remove_click , background="red").place(x=20, y=280)
 Button(win, text="Total Price", width=10, command=total_price , background="grey").place(x=150, y=280)
+Button(win,text="Save to Database", width=29, command=save_click, background="lightblue").place(x=20, y=320)
 
 table = ttk.Treeview(win, height=12, columns=["Id", "Name", "Brand", "Quantity", "Price"],
                      show="headings")

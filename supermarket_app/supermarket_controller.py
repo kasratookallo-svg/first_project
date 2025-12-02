@@ -15,10 +15,10 @@ class ProductController:
     def save(id, name,brand,quantity ,price):
         try:
             product = Product(id,
-                                                  name,
-                                                  brand,
-                                                  quantity,
-                                                  price)
+            name,
+            brand,
+            quantity,
+            price)
             product_da = ProductDataAccess()
             product_da.save(product)
             return True, "Product saved successfully"
