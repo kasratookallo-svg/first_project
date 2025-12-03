@@ -1,10 +1,15 @@
-# Supermarket Application
-# Made by Kasra Tookallo
-# 2025 the year
-# 11/28/2025
 #----------------------------------------------------------------------
-# This program relies on two main approach simultaneously, including Class_Method (Object_Oriented programming) and Function_handling.
+#                               Supermarket Application
+#                <<<<<<         Made by Kasra Tookallo           >>>>>>
+#                                   2025 the year
+#                                    11/28/2025
 #----------------------------------------------------------------------
+# Description : This program relies on two main approach simultaneously, including Class_Method (Object_Oriented programming) and Function_handling.
+#----------------------------------------------------------------------
+# Additional hint : Database is recalling Class_method (1st approach)
+#                   while
+#                   List_Features, including Submit and Total Price List through Window,
+#                   are based on Function_method (2nd approach).
 
 import sqlite3
 

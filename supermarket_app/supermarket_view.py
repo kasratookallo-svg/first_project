@@ -1,12 +1,18 @@
-# Supermarket Application
-# Made by Kasra Tookallo
-# 2025 the year
-# 11/28/2025
 #----------------------------------------------------------------------
-# This program relies on two main approach simultaneously, including Class_Method (Object_Oriented programming) and Function_handling.
+#                               Supermarket Application
+#                <<<<<<         Made by Kasra Tookallo           >>>>>>
+#                                   2025 the year
+#                                    11/28/2025
 #----------------------------------------------------------------------
-from persiantools.digits import to_word
+# Description : This program relies on two main approach simultaneously, including Class_Method (Object_Oriented programming) and Function_handling.
+#----------------------------------------------------------------------
+# Additional hint : Database is recalling Class_method (1st approach)
+#                   while
+#                   List_Features, including Submit and Total Price List through Window,
+#                   are based on Function_method (2nd approach).
 
+
+from persiantools.digits import to_word
 from supermarket_controller import *
 from supermarket_model import *
 from tkinter import *
@@ -136,7 +142,7 @@ name = StringVar()
 brand = StringVar()
 quantity = IntVar()
 price = DoubleVar()
-submit_date = StringVar()
+date = StringVar()
 
 Entry(win, textvariable=id , width=22,background="grey" , fg="white").place(x=90, y=20)
 Entry(win, textvariable=name, width=22,background="grey" , fg="white").place(x=90, y=60)
@@ -145,12 +151,12 @@ Entry(win, textvariable=quantity, width=22,background="grey" , fg="white").place
 Entry(win, textvariable=price, width=22,background="grey" , fg="white").place(x=90, y=180)
 Entry(win, textvariable=date , width=22,background="grey" , fg="white").place(x=90, y=220)
 
-Button(win, text="Save to List", width=10, command=receive_product, background="grey").place(x=20, y=260)
+Button(win, text="Add to List", width=10, command=receive_product, background="grey").place(x=20, y=260)
 Button(win, text="Total Price List", width=17, command=total_price , background="grey").place(x=100, y=260)
 
 Button(win, text="Edit Database", width=10, command=edit_click , background="lightblue").place(x=20, y=295)
 Button(win, text="Remove from Database", width=17, command=remove_click , background="lightblue").place(x=100, y=295)
-Button(win,text="Save to Database", width=29, command=save_click, background="lightblue").place(x=20, y=325)
+Button(win,text="Submit to Database", width=29, command=save_click, background="lightblue").place(x=20, y=325)
 
 table = ttk.Treeview(win, height=12, columns=["Id", "Name", "Brand", "Quantity", "Price" , "Date"],
                      show="headings")
