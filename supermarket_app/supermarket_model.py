@@ -124,7 +124,7 @@ def creat_products_and_validate(id ,name , brand , quantity , price):
 
     return product
 #--------------------------------------------------------------------------------------------------
-
+#                                              total_price function
 def calculate_total(product_list):
     # If there is no product available show this message
     if not product_list:
