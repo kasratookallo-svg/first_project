@@ -25,8 +25,8 @@ class ProductDataAccess:
     def save(self, product):
         with  sqlite3.connect("supermarket_db") as connection:
             cursor = connection.cursor()
-            cursor.execute("insert into products (id,name,brand,quantity,price) values (?, ?, ?, ?, ?)",
-                           [product.id, product.name, product.brand, product.quantity , product.price]
+            cursor.execute("insert into products_with_date (id,name,brand,quantity,price,date) values (?, ?, ?, ?, ?, ?)",
+                           [product.id, product.name, product.brand, product.quantity , product.price , product.date]
                            )
             connection.commit()
 
@@ -34,19 +34,19 @@ class ProductDataAccess:
     def edit(self, product):
         with  sqlite3.connect("supermarket_db") as connection:
             cursor = connection.cursor()
-            cursor.execute("update products set name=?, brand=?, quantity=? , price=? where id=?",
-                           [product.name, product.brand, product.quantity , product.price, product.id]
+            cursor.execute("update products_with_date set name=?, brand=?, quantity=? , price=? , date=? where id=?",
+                           [product.name, product.brand, product.quantity , product.price, product.date, product.id]
                            )
             connection.commit()
 
     def remove(self, product_id):
         with  sqlite3.connect("supermarket_db") as connection:
             cursor = connection.cursor()
-            cursor.execute("delete from products where id=?", [product_id])
+            cursor.execute("delete from products_with_date where id=?", [product_id])
             connection.commit()
 
     def find_all(self):
         with  sqlite3.connect("supermarket_db") as connection:
             cursor = connection.cursor()
-            cursor.execute("select * from products order by id")
+            cursor.execute("select * from products_with_date order by id")
             return cursor.fetchall()

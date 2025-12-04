@@ -26,13 +26,16 @@ product_list = []
 
 #--------------------------------------------------------------------------------------------------
 # First approach : Class
+# This approach require date.
+
 class Product:
-    def __init__(self, id, name, brand, quantity, price ):
+    def __init__(self, id, name, brand, quantity, price ,date):
         self.id = id
         self.name = name
         self.brand = brand
         self.quantity = quantity
         self.price = price
+        self.date = datetime.strptime(date, "%Y-%m-%d").date()
 
     # Method_function
     def is_valid(self):
@@ -51,22 +54,28 @@ class Product:
         if not (type(self.price) == float and self.price > 0):
             raise NameError("Invalid price!")
 
+        if not self.date >= datetime.today().date():
+            raise NameError("Invalid expiration date!")
 
         return True
 
     # Representation
     def __repr__(self):
-        return print(f"Each Product Info ====>> ID Num : {self.id:10} ---> Name :{self.name:10}, Brand :{self.brand:10}, Quantity :{self.quantity:5}, Price :{self.price:5}")
+        return print(f"Each Product Info ====>> ID Num : {self.id:10} ---> Name :{self.name:10}, Brand :{self.brand:10}, Quantity :{self.quantity:5}, Price :{self.price:5}, Date :{self.date:5}")
 
     def to_tuple(self):
         return tuple((self.id,
                       self.name,
                       self.brand,
                       self.quantity,
-                      self.price))
+                      self.price,
+                      self.date
+                      ))
 
 #-----------------------------------------------------------------------------------------------
 # Second appproach : Function_handling
+# This approach does not require date.
+
 def id_validator(id):
     if (type(id) == int and id > 0):
         return id
@@ -97,13 +106,12 @@ def quantity_validator(quantity):
     else:
         raise ValueError("Quantity must be a positive number")
 
-def creat_products_and_validate(id ,name , brand , quantity , price): #, date):
+def creat_products_and_validate(id ,name , brand , quantity , price):
     id_validator(id)
     name_validator(name)
     brand_validator(brand)
     quantity_validator(quantity)
     price_validator(price)
-    #date = datetime.strptime(date, "%Y-%m-%d").date()
 
 
     product = {
@@ -112,7 +120,7 @@ def creat_products_and_validate(id ,name , brand , quantity , price): #, date):
         "brand": brand,
         "quantity": quantity,
         "price": price }
-        #"date": date}
+
 
     return product
 #--------------------------------------------------------------------------

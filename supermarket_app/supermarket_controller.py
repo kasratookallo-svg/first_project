@@ -17,20 +17,24 @@
 # The second group is Database_Related Buttons, including Submit, Edit , Remove to/from Database.
 # These two groups work independantly.
 #----------------------------------------------------------------------
+# Product Database Controller is based on Class Product.
 
 from supermarket_dao import ProductDataAccess
 from supermarket_model import *
 
-
+# Since Database Controller is a Class_Method, therefore requires date.
 class ProductController:
     @staticmethod
-    def save(id, name,brand,quantity ,price):
+    def save(id, name, brand, quantity ,price ,date):
         try:
-            product = Product(id,
+            product = Product(
+            id,
             name,
             brand,
             quantity,
-            price)
+            price,
+            date
+            )
             product_da = ProductDataAccess()
             product_da.save(product)
             return True, "Product saved successfully"
@@ -38,13 +42,16 @@ class ProductController:
             return False, f"Error saving product {e}"
 
     @staticmethod
-    def edit(id, name, brand, quantity, price):
+    def edit(id, name, brand, quantity, price, date):
         try:
-            product = Product(id,
-                                                  name,
-                                                  brand,
-                                                  quantity,
-                                                  price)
+            product = Product(
+                id,
+                name,
+                brand,
+                quantity,
+                price,
+                date
+                )
             product_da = ProductDataAccess()
             product_da.edit(product)
             return True, "Product edited successfully"
