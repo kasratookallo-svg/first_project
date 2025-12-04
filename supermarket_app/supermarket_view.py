@@ -1,22 +1,24 @@
-#----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------
+
 #                               Supermarket Application
 #                <<<<<<         Made by Kasra Tookallo           >>>>>>
 #                                   2025 the year
 #                                    11/28/2025
-#----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------
 # Description : This program relies on two main approach simultaneously, such as Class_Method (Object_Oriented programming) and Function_handling.
-#----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------
 # Additional hint : Database is recalling Class_method (1st approach) (Date required)
 #                   while
 #                   List_Features, including Submit and Total Price_List through Window,
 #                   are based on Function_method (2nd approach) (Date free).
-#----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------
 # Finally, please read the following structions before running the perogram.
 # In List_Features there are two groups of Buttons in Window (tkinter):
 # The first group is Add to list and Total Price_List.
 # The second group is Database_Related Buttons, including Submit, Edit , Remove to/from Database.
 # These two groups work independantly.
-#----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------
+
 import datetime
 from time import strptime
 
@@ -30,7 +32,7 @@ import persiantools
 
 
 product_list = []
-
+#                                                    Table reseting
 def reset():
     id.set(0)
     name.set("")
@@ -46,7 +48,7 @@ def reset():
     for product in product_list:
         table.insert("", END, values=tuple(product))
 #-----------------------------------------------------------------------------------------------
-#                               Table_Database function
+#                                                  Table_Database function
 def select_product(event):
     product = table.item(table.focus())["values"]
     id.set(product[0])
@@ -58,6 +60,8 @@ def select_product(event):
 #-----------------------------------------------------------------------------------------------
 # Entry for Add_to_List and Total price_list based on second approach (Function_handling)
 # Second approach is wll_designed for calculating total price which does not require date.
+#--------------------------------------------------------------------------------------------------
+
 def receive_product():
     try:
         product = creat_products_and_validate(
@@ -83,7 +87,7 @@ def receive_product():
     except Exception as e:
         messagebox.showerror("Error", f"Something went wrong : {e}")
 #-----------------------------------------------------------------------------------------------
-#                               Database functions
+#                                          Recalling Database functions
 def save_click():
     status, message = ProductController.save(
         id.get(),
