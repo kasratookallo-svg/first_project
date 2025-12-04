@@ -1,22 +1,22 @@
-#----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------
 #                               Supermarket Application
 #                <<<<<<         Made by Kasra Tookallo           >>>>>>
 #                                   2025 the year
 #                                    11/28/2025
-#----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------
 # Description : This program relies on two main approach simultaneously, including Class_Method (Object_Oriented programming) and Function_handling.
-#----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------
 # Additional hint : Database is recalling Class_method (1st approach)
 #                   while
 #                   List_Features, including Submit and Total Price List through Window,
 #                   are based on Function_method (2nd approach).
-#----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------
 # Finally, please read the following structions before running the perogram.
 # In List_Features there are two groups of Buttons in Window (tkinter):
 # The first group is Add to list and Total Price List.
 # The second group is Database_Related Buttons, including Submit, Edit , Remove to/from Database.
 # These two groups work independantly.
-#----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------
 
 import re
 from datetime import date,datetime
@@ -25,7 +25,7 @@ from datetime import date,datetime
 product_list = []
 
 #--------------------------------------------------------------------------------------------------
-# First approach : Class
+#                                                 First approach : Class
 # This approach require date.
 
 class Product:
@@ -37,7 +37,7 @@ class Product:
         self.price = price
         self.date = datetime.strptime(date, "%Y-%m-%d").date()
 
-    # Method_function
+    #                                                 Method_function
     def is_valid(self):
         if not (type(self.id ) == int and self.id > 0):
             raise NameError("Invalid product ID")
@@ -59,7 +59,7 @@ class Product:
 
         return True
 
-    # Representation
+    #                                               Representation
     def __repr__(self):
         return print(f"Each Product Info ====>> ID Num : {self.id:10} ---> Name :{self.name:10}, Brand :{self.brand:10}, Quantity :{self.quantity:5}, Price :{self.price:5}, Date :{self.date:5}")
 
@@ -72,8 +72,8 @@ class Product:
                       self.date
                       ))
 
-#-----------------------------------------------------------------------------------------------
-# Second appproach : Function_handling
+#--------------------------------------------------------------------------------------------------
+#                                          Second appproach : Function_handling
 # This approach does not require date.
 
 def id_validator(id):
@@ -123,7 +123,8 @@ def creat_products_and_validate(id ,name , brand , quantity , price):
 
 
     return product
-#--------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------
+
 def calculate_total(product_list):
     # If there is no product available show this message
     if not product_list:
