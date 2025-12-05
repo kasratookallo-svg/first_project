@@ -26,7 +26,7 @@ product_list = []
 
 #--------------------------------------------------------------------------------------------------
 #                                                 First approach : Class
-# This approach require date.
+# This approach require date and is well_designed for calculating Total_price.
 
 class Product:
     def __init__(self, id, name, brand, quantity, price ,date):
