@@ -178,12 +178,12 @@ id = IntVar()
 Entry(win, textvariable=id , width=22,background="grey" , fg="white").place(x=90, y=20)
 
 
-Label(win, text="Name\n>3",background="grey", fg="white").place(x=20, y=60,width=70 ,height=29)
+Label(win, text="Name\n>3 char.",background="grey", fg="white").place(x=20, y=60,width=70 ,height=29)
 name = StringVar()
 ttk.Combobox(win, textvariable=name , values=("Laptop","TV","PlayStation","SmartPhone") ).place(x=90, y=60 ,width=135)
 
 
-Label(win, text="Brand\n>3",background="grey", fg="white").place(x=20, y=100,width=70 ,height=29)
+Label(win, text="Brand\n>3 char.",background="grey", fg="white").place(x=20, y=100,width=70 ,height=29)
 brand = StringVar()
 ttk.Combobox(win, textvariable=brand, values=("Sony","Lenovo","Samsung","Apple")).place(x=90, y=100,width=135)
 
