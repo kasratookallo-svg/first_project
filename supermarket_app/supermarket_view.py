@@ -69,7 +69,8 @@ def receive_product():
             name.get(),
             brand.get(),
             quantity.get(),
-            price.get()
+            price.get(),
+            date.get()
             )
         product_list.append(product)
         print(product, "Product saved successfully.")
@@ -131,19 +132,20 @@ def remove_click():
 def total_price():
     try:
         total = calculate_total(product_list)
-        messagebox.showinfo("Total Price", f"Total Price: {total}\n{to_word(total)}\tتومان")
+        messagebox.showinfo("Total Price", f"Total Price:\n تومان {total}\n{to_word(total)}")
     except Exception as e:
         messagebox.showerror("Error", f"Error!!! : {e}")
 #-----------------------------------------------------------------------------------------------
-
+                        # Table starts here
 
 win = Tk()
 win.geometry("750x630")
 win.title("Welcome to Super Market _ List of Products")
 win.configure(bg="green")
-
-Label(win , text="Note : This window has 5 buttons which are paired in group of two."
-                 "\n'Add to List' and 'Total Price_List', and"
+#-----------------------------------------------------------------------------------------------------------------------------------
+#                                      Description
+Label(win , text="Note : This window has 5 buttons which are paired in groups of two."
+                 "\n'Add to List' and 'Total Price_List',"
                  "\n'Submit', 'Edit', and 'Remove from Database'."
                  "\nIf you have a saved list from the past in Database and want to calculate the total price of them,"
                  "\nyou should select them case_by_case before clicking on 'Add to List' button.",
@@ -170,7 +172,7 @@ Label(win, text="Instruction : "
                 "\nand then 'Add to List' new product with a new Id."
                 "\nFinally, remember to 'Submit to Database' your new product.",
       background="yellow", fg="black").place(x=20, y=450 ,width=505, height=167)
-
+#-----------------------------------------------------------------------------------------------------------------------------------
 Label(win, text="Id\n>0" ,background="grey" , fg="white").place(x=20, y=20,width=70 ,height=29)
 id = IntVar()
 Entry(win, textvariable=id , width=22,background="grey" , fg="white").place(x=90, y=20)
@@ -178,12 +180,12 @@ Entry(win, textvariable=id , width=22,background="grey" , fg="white").place(x=90
 
 Label(win, text="Name\n>3",background="grey", fg="white").place(x=20, y=60,width=70 ,height=29)
 name = StringVar()
-Entry(win, textvariable=name, width=22,background="grey" , fg="white").place(x=90, y=60)
+ttk.Combobox(win, textvariable=name , values=("Laptop","TV","PlayStation","SmartPhone") ).place(x=90, y=60 ,width=135)
 
 
 Label(win, text="Brand\n>3",background="grey", fg="white").place(x=20, y=100,width=70 ,height=29)
 brand = StringVar()
-Entry(win, textvariable=brand, width=22,background="grey" , fg="white").place(x=90, y=100)
+ttk.Combobox(win, textvariable=brand, values=("Sony","Lenovo","Samsung","Apple")).place(x=90, y=100,width=135)
 
 
 Label(win, text="Quantity\nتعداد",background="grey", fg="white").place(x=20, y=140,width=70 ,height=30)

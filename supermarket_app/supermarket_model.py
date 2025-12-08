@@ -77,36 +77,26 @@ class Product:
 # This approach does not require date while being well_designed for calculating Total_price.
 
 def id_validator(id):
-    if (type(id) == int and id > 0):
-        return id
-    else:
-        return ValueError("ID Must Be positive number!")
+    if not (type(id) == int and id > 0):
+        raise ValueError("ID Must Be positive number!")
 
 def name_validator(name):
-    if re.match(r"^[a-zA-Z0-9\s]{2,20}$", name):
-        return name
-    else:
-        raise ValueError("Name must be a string")
+    if not re.match(r"^[a-zA-Z0-9\s]{2,20}$", name):
+        raise ValueError("Name must contain letters, numbers, space between 2,20 characters!")
 
 def brand_validator(brand):
-    if re.match(r"^[a-zA-Z0-9\s]{2,20}$", brand):
-        return brand
-    else:
-        raise ValueError("Brand must be a string")
+    if not re.match(r"^[a-zA-Z0-9\s]{2,20}$", brand):
+        raise ValueError("Brand must contain letters, numbers, space between 2,20 characters!")
 
 def price_validator(price):
-    if (type(price) == float and price > 0):
-        return price
-    else:
+    if not (type(price) == float and price > 0):
         raise ValueError("Price must be a positive number")
 
 def quantity_validator(quantity):
-    if type(quantity) == int and quantity > 0:
-        return quantity
-    else:
+    if not type(quantity) == int and quantity > 0:
         raise ValueError("Quantity must be a positive number")
 
-def creat_products_and_validate(id ,name , brand , quantity , price):
+def creat_products_and_validate(id ,name , brand , quantity , price,date):
     id_validator(id)
     name_validator(name)
     brand_validator(brand)
@@ -119,7 +109,9 @@ def creat_products_and_validate(id ,name , brand , quantity , price):
         "name": name,
         "brand": brand,
         "quantity": quantity,
-        "price": price }
+        "price": price,
+        "date": date
+    }
 
 
     return product
