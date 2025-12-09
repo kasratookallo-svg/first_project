@@ -21,7 +21,23 @@
 
 import sqlite3
 
-#                                             Database_related Functions 
+#                                             Database_related Functions
+with sqlite3.connect("supermarket_db") as connection:
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        create table if not exists products_with_date (
+    id integer,
+    name text,
+    brand text,
+    quantity integer,
+    price integer,
+    Date text
+        )
+    """)
+
+    connection.commit()
+print("Database and table created successfully.")
 class ProductDataAccess:
     def save(self, product):
         with  sqlite3.connect("supermarket_db") as connection:
