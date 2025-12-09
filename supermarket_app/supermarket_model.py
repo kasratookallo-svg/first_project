@@ -55,7 +55,7 @@ class Product:
             return False, "Invalid price!"
 
         try:
-            date = datetime.strptime(self.date, "%Y-%m-%d")
+            self.date = datetime.strptime(self.date, "%Y-%m-%d")
         except ValueError:
             return False, "Invalid Enroll Date (YYYY-MM-DD)"
         today = datetime.now().date()
