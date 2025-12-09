@@ -26,7 +26,7 @@ product_list = []
 
 #--------------------------------------------------------------------------------------------------
 #                                                 First approach : Class
-# This approach requires date.
+
 
 class Product:
     def __init__(self, id, name, brand, quantity, price ,date):
@@ -53,7 +53,7 @@ class Product:
 
 #--------------------------------------------------------------------------------------------------
 #                                          Second appproach : Function_handling
-# This approach does not require date while being well_designed for calculating Total_price.
+# This approach is well_designed for calculating Total_price.
 
 def id_validator(id):
     if not (type(id) == int and id > 0):
