@@ -225,12 +225,12 @@ Button(win,text="Submit to Database", width=29, command=save_click, background="
 table = ttk.Treeview(win, height=12, columns=["Id", "Name", "Brand", "Quantity", "Price" , "Date"],
                      show="headings")
 
-table.column("Id", width=60)
-table.column("Name", width=100)
-table.column("Brand", width=100)
-table.column("Quantity", width=60)
-table.column("Price" , width=60)
-table.column("Date", width=100 )
+table.column("Id", width=60, anchor=CENTER)
+table.column("Name", width=100, anchor=CENTER)
+table.column("Brand", width=100, anchor=CENTER)
+table.column("Quantity", width=60, anchor=CENTER)
+table.column("Price" , width=60, anchor=CENTER)
+table.column("Date", width=100, anchor=CENTER )
 
 table.heading("Id", text="Id" )
 table.heading("Name", text="Name")
