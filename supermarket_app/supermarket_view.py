@@ -185,6 +185,7 @@ Label(win, text="Instruction : "
                 "\nFinally, remember to 'Submit to Database' your new product.",
       background="yellow", fg="black").place(x=20, y=450 ,width=505, height=167)
 #-----------------------------------------------------------------------------------------------------------------------------------
+#                          Window and Table_Region Handling
 Label(win, text="Id\n>0" ,background="grey" , fg="white").place(x=20, y=20,width=50 ,height=29)
 id = IntVar()
 Entry(win, textvariable=id ,width=22, background="grey" , fg="white").place(x=90, y=20)
