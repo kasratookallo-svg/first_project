@@ -34,7 +34,6 @@ import persiantools
 
 #                                                    Table reseting
 def reset():
-    id.set(0)
     name.set("")
     brand.set("")
     quantity.set(0)
@@ -45,19 +44,33 @@ def reset():
 
     for item in table.get_children():
         table.delete(item)
+#------------------------------------------------------------------------------------
+    max_id = 0
+    if status:
+        for product in product_list:
+            table.insert("", END, values=product)
+            max_id = max(max_id, int(product[0]))
+    else:
+        messagebox.showerror("Error", product_list)
 
-    for product in product_list:
-        table.insert("", END, values=tuple(product))
+
+    id.set(max_id + 1)
+
+#------------------------------------------------------------------------------------
+
+    #for product in product_list:
+     #   table.insert("", END, values=tuple(product))
 #-----------------------------------------------------------------------------------------------
 #                                                  Table_Database function
 def select_product(event):
     product = table.item(table.focus())["values"]
-    id.set(product[0])
-    name.set(product[1])
-    brand.set(product[2])
-    quantity.set(product[3])
-    price.set(product[4])
-    date.set(product[5])
+    if product:
+        id.set(product[0])
+        name.set(product[1])
+        brand.set(product[2])
+        quantity.set(product[3])
+        price.set(product[4])
+        date.set(product[5])
 #-----------------------------------------------------------------------------------------------
 # Entry for Add_to_List and Total price_list based on second approach (Function_handling)
 # Second approach is wll_designed for calculating total price.
@@ -75,11 +88,8 @@ def receive_product():
             )
         product_list.append(product)
         print(product, "Product saved successfully.")
-
-        # If you use Pickle
-        # save_to_file(product_list)
-
         print("-" * 150)
+
         #To insert Data into the table
         table.insert("" , END, values=tuple(product.values()))
         messagebox.showinfo("Information Saved", "Product saved successfully.")
@@ -174,9 +184,9 @@ Label(win, text="Instruction : "
                 "\nFinally, remember to 'Submit to Database' your new product.",
       background="yellow", fg="black").place(x=20, y=450 ,width=505, height=167)
 #-----------------------------------------------------------------------------------------------------------------------------------
-Label(win, text="Id\n>0" ,background="grey" , fg="white").place(x=20, y=20,width=70 ,height=29)
+Label(win, text="Id\n>0" ,background="grey" , fg="white").place(x=20, y=20,width=50 ,height=29)
 id = IntVar()
-Entry(win, textvariable=id , width=22,background="grey" , fg="white").place(x=90, y=20)
+Entry(win, textvariable=id ,width=22, background="grey" , fg="white").place(x=90, y=20)
 
 
 Label(win, text="Name\n>3 char.",background="grey", fg="white").place(x=20, y=60,width=70 ,height=29)
