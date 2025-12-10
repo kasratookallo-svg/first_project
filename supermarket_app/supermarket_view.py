@@ -97,7 +97,6 @@ def receive_product():
         messagebox.showinfo("Information Saved", "Product saved successfully.")
         print("Your Market includes : ", product_list)
         print("-" * 150)
-        #reset()
     except Exception as e:
         messagebox.showerror("Error", f"Something went wrong : {e}")
 #-----------------------------------------------------------------------------------------------
