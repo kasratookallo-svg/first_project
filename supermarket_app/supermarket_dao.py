@@ -23,7 +23,7 @@ import sqlite3
 
 #                                             Database_related Functions
 # Database Existence
-with sqlite3.connect("supermarket_db") as connection:
+with sqlite3.connect("supermarket_db_backup") as connection:
     cursor = connection.cursor()
 
     cursor.execute("""
@@ -32,7 +32,7 @@ with sqlite3.connect("supermarket_db") as connection:
     name text,
     brand text,
     quantity integer,
-    price integer,
+    price real,
     Date text
         )
     """)
@@ -40,10 +40,11 @@ with sqlite3.connect("supermarket_db") as connection:
     connection.commit()
 print("Database and table created successfully.")
 
+# Product DA Class
 class ProductDataAccess:
 
     def save(self, product):
-        with  sqlite3.connect("supermarket_db") as connection:
+        with  sqlite3.connect("supermarket_db_backup") as connection:
             cursor = connection.cursor()
             cursor.execute("insert into products_with_date (id,name,brand,quantity,price,date) values (?, ?, ?, ?, ?, ?)",
                            [product.id, product.name, product.brand, product.quantity , product.price , product.date]
@@ -52,7 +53,7 @@ class ProductDataAccess:
 
 
     def edit(self, product):
-        with  sqlite3.connect("supermarket_db") as connection:
+        with  sqlite3.connect("supermarket_db_backup") as connection:
             cursor = connection.cursor()
             cursor.execute("update products_with_date set name=?, brand=?, quantity=? , price=? , date=? where id=?",
                            [product.name, product.brand, product.quantity , product.price, product.date, product.id]
@@ -60,13 +61,13 @@ class ProductDataAccess:
             connection.commit()
 
     def remove(self, product_id):
-        with  sqlite3.connect("supermarket_db") as connection:
+        with  sqlite3.connect("supermarket_db_backup") as connection:
             cursor = connection.cursor()
             cursor.execute("delete from products_with_date where id=?", [product_id])
             connection.commit()
 
     def find_all(self):
-        with  sqlite3.connect("supermarket_db") as connection:
+        with  sqlite3.connect("supermarket_db_backup") as connection:
             cursor = connection.cursor()
             cursor.execute("select * from products_with_date order by id")
             return cursor.fetchall()
