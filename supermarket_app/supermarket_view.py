@@ -150,13 +150,17 @@ def total_price():
         messagebox.showinfo("Total Price", f"Total Price:\n تومان {total}\n{to_word(total)}")
     except Exception as e:
         messagebox.showerror("Error", f"Error!!! : {e}")
+    # Insert Total Credits to table
+    final_total_label.config(text=f"Total Credits: {total}\n تومان {to_word(total)} ")
 #-----------------------------------------------------------------------------------------------
                         # Table starts here
 
 win = Tk()
 win.geometry("750x630")
+win.resizable(False, False)
 win.title("Welcome to Super Market _ List of Products")
 win.configure(bg="green")
+
 #-----------------------------------------------------------------------------------------------------------------------------------
 #                                      Description
 
@@ -246,6 +250,10 @@ table.heading("Date", text="Date")
 table.place(x=250, y=20 ,height=327)
 table.bind("<<TreeviewSelect>>", select_product)
 
+# region total price label
+final_total_label = Label(win, text="Total Credits: ", font=("Arial", 14, "bold"), fg="blue")
+final_total_label.place(x=255, y=300)
+final_total_label.config(text=f"Total Credits: ")
 
 reset()
 win.mainloop()
